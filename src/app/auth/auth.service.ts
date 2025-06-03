@@ -17,16 +17,16 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<Usuario> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, password })
-      .pipe(
-        tap(response => {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.usuario.id?.toString() || '');
-        }),
-        map(response => response.usuario),
-        catchError(this.handleError)
-      );
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, password }).pipe(
+      map(response => Usuario.fromJson(response)), // Usa tu método personalizado
+      tap(user => {
+        localStorage.setItem('userId', user.id?.toString() || '');
+        localStorage.setItem('userName', user.nombre); // opcional
+      }),
+      catchError(this.handleError)
+    );
   }
+
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
@@ -38,25 +38,33 @@ export class AuthService {
     localStorage.removeItem('userId');
   }
 
+  getCurrentUser(): Usuario | null {
+    const id = localStorage.getItem('userId');
+    const nombre = localStorage.getItem('userName');
+    return id && nombre
+      ? new Usuario(+id, '', '', '', '', nombre, '') // Puedes ajustar según lo que guardes
+      : null;
+  }
+
   getUserId(): string | null {
     return localStorage.getItem('userId');
   }
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ha ocurrido un error en el servidor.';
-    
+
     if (error.error instanceof ErrorEvent) {
-      
+
       errorMessage = error.error.message;
     } else {
-     
+
       if (error.status === 401) {
         errorMessage = 'Credenciales inválidas';
       } else if (error.status === 404) {
         errorMessage = 'Usuario no encontrado';
       }
     }
-    
+
     return throwError(() => new Error(errorMessage));
   }
 }

@@ -1,17 +1,60 @@
 <div class="home-container">
-  <h1 class="main-title">PROYECTO POZOS</h1>
-  
-  <div class="slider-container">
-    <div class="slide" [class.active]="true">
-      {{ slides[currentSlide] }}
-    </div>
-    
-    <div class="slide-indicators">
-      <span 
-        *ngFor="let slide of slides; let i = index" 
-        class="indicator"
-        [class.active]="i === currentSlide">
-      </span>
+  <div class="floating-image left">
+    <img src="assets/water-well.svg" alt="Pozo de agua" />
+  </div>
+
+  <div class="floating-image right">
+    <img src="assets/default-farm.svg" alt="Granja" />
+  </div>
+
+  <div class="content-wrapper">
+    <div class="main-content">
+      <h1 class="main-title">
+        <span class="title-accent">PROYECTO</span> POZOS
+      </h1>
+
+      <div class="slider-container">
+        <div class="slide" [class.active]="true">
+          <div class="slide-icon">
+            <i [class]="slideIcons[currentSlide]"></i>
+          </div>
+          <h2 class="slide-title">{{ slideTitles[currentSlide] }}</h2>
+          <p class="slide-description">{{ slideDescriptions[currentSlide] }}</p>
+          <a [routerLink]="slideLinks[currentSlide]" class="slide-cta">
+            Saber más
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="slide-indicators">
+          <button
+            *ngFor="let slide of slideTitles; let i = index"
+            class="indicator"
+            [class.active]="i === currentSlide"
+            (click)="setCurrentSlide(i)"
+            [attr.aria-label]="'Ver slide ' + (i + 1)">
+            <i [class]="slideIcons[i]"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-tachometer-alt"></i>
+          <h3>Monitoreo en Tiempo Real</h3>
+          <p>Seguimiento continuo del estado de tus pozos</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Análisis Detallado</h3>
+          <p>Estadísticas y reportes completos</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Gestión Segura</h3>
+          <p>Control y seguridad en tus operaciones</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

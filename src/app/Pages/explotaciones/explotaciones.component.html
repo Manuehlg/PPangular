@@ -1,12 +1,12 @@
 <!-- Vista de lista -->
 <div class="explotaciones-container" *ngIf="!currentExplotacion">
-  <h1>Mis Explotaciones</h1>
+  <h1>Buscar Explotaciones</h1>
 
   <!-- Buscador -->
   <div class="search-container">
-    <input 
-      type="text" 
-      [(ngModel)]="searchTerm" 
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
       (ngModelChange)="onSearch()"
       placeholder="Buscar por nombre o ciudad..."
       class="search-input"

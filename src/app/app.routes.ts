@@ -10,19 +10,21 @@ import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.com
 
 // Guard
 import { AuthGuard } from './guards/auth.guard';
+import {UsuarioComponent} from './Pages/usuario/usuario.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'explotaciones', component: ExplotacionesComponent },
+  { path: 'explotaciones/:id', component: ExplotacionesComponent },
+  { path: 'informacion', component: InformacionComponent },
   {
     path: '',
     canActivate: [AuthGuard],
     children: [
-      { path: 'home', component: HomeComponent },
-      { path: 'explotaciones', component: ExplotacionesComponent },
-      { path: 'explotaciones/:id', component: ExplotacionesComponent },
-      { path: 'informacion', component: InformacionComponent },
-      { path: 'pozos', component: PozosComponent }
+      { path: 'pozos', component: PozosComponent },
+      { path: 'usuario', component: UsuarioComponent }
     ]
   },
   { path: '**', component: PageNotFoundComponent }

@@ -1,37 +1,52 @@
 <nav class="navbar">
-  <div 
-    class="brand" 
-    (click)="goToHome()" 
-    (keydown.enter)="goToHome()" 
+  <div
+    class="brand"
+    (click)="goToHome()"
+    (keydown.enter)="goToHome()"
     (keydown.space)="goToHome()"
-    role="button" 
+    role="button"
     tabindex="0">
-    <img class="brand-logo" src="assets/water-well.svg" alt="logo" aria-hidden="true" />
-    <span class="brand-name">ProyectoPozo</span>
+    <img class="brand-logo" src="assets/escasez-de-agua.png" alt="Logo ProyectoPozo" />
+    <span class="brand-name">Proyecto<span class="accent">Pozo</span></span>
   </div>
   <div class="nav-links">
-    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-    <a routerLink="/Pages/explotaciones" routerLinkActive="active">Explotaciones</a>
-    <a routerLink="/Pages/pozos" routerLinkActive="active">Pozos</a>
-    <a routerLink="/Pages/informacion" routerLinkActive="active">Información</a>
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <i class="fas fa-home"></i>
+      <span>Inicio</span>
+    </a>
+    <a routerLink="/explotaciones" routerLinkActive="active">
+      <i class="fas fa-industry"></i>
+      <span>Explotaciones</span>
+    </a>
+    <a routerLink="/pozos" routerLinkActive="active">
+      <i class="fas fa-water"></i>
+      <span>Pozos</span>
+    </a>
+    <a routerLink="/informacion" routerLinkActive="active">
+      <i class="fas fa-info-circle"></i>
+      <span>Información</span>
+    </a>
   </div>
   <div class="user-menu" *ngIf="isAuthenticated()">
-    <button 
-      class="user-btn" 
-      (click)="toggleUserMenu()" 
+    <button
+      class="user-btn"
+      (click)="toggleUserMenu()"
       aria-label="Menú de usuario"
       [attr.aria-expanded]="isUserMenuOpen">
       <img src="assets/user-icon.svg" alt="Usuario" class="user-icon" />
     </button>
     <div class="dropdown-menu" [class.show]="isUserMenuOpen">
       <button (click)="logout()" class="dropdown-item">
-        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-        Cerrar Sesión
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Cerrar Sesión</span>
       </button>
     </div>
   </div>
   <div class="login-link" *ngIf="!isAuthenticated()">
-    <a routerLink="/login">Iniciar Sesión</a>
+    <a routerLink="/login">
+      <i class="fas fa-sign-in-alt"></i>
+      <span>Iniciar Sesión</span>
+    </a>
   </div>
 </nav>
 

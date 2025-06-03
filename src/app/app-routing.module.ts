@@ -9,13 +9,14 @@ import { PageNotFoundComponent } from './Pages/page-not-found/page-not-found.com
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'explotaciones', component: ExplotacionesComponent, canActivate: [AuthGuard] },
-  { path: 'explotaciones/:id', component: ExplotacionesComponent, canActivate: [AuthGuard] },
-  { path: 'informacion', component: InformacionComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomeComponent },
+  { path: 'explotaciones', component: ExplotacionesComponent, },
+  { path: 'explotaciones/:id', component: ExplotacionesComponent,  },
+  { path: 'informacion', component: InformacionComponent, },
   { path: 'pozos', component: PozosComponent, canActivate: [AuthGuard] },
+  { path: 'usuario', component: PozosComponent, canActivate: [AuthGuard] }, // Assuming 'usuario' is also protected
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -23,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } 
+export class AppRoutingModule { }

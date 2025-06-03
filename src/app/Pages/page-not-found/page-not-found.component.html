@@ -1,5 +1,22 @@
 <div class="not-found-container">
-  <h1>404 NOT FOUND</h1>
-  <p>Lo sentimos, la página que buscas no existe.</p>
-  <a routerLink="/home">Volver al inicio</a>
+  <div class="content">
+    <div class="error-code">404</div>
+    <h1>Página no encontrada</h1>
+    <div class="divider"></div>
+    <p class="error-message">Lo sentimos, la página que estás buscando no existe o ha sido movida.</p>
+    <div class="water-animation">
+      <div class="water-drop"></div>
+      <div class="water-ripple"></div>
+    </div>
+    <a routerLink="/home" class="home-button">
+      <i class="fas fa-home"></i>
+      Volver al inicio
+    </a>
+    <p class="suggestion">Puedes intentar:</p>
+    <ul class="suggestions-list">
+      <li>Verificar la URL ingresada</li>
+      <li>Regresar a la página anterior</li>
+      <li>Ir a la página de inicio</li>
+    </ul>
+  </div>
 </div>

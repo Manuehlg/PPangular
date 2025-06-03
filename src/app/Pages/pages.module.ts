@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,9 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     InformacionComponent,
     PozosComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UsuarioComponent
+
   ],
   exports: [
     CommonModule,
@@ -51,7 +54,11 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     InformacionComponent,
     PozosComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UsuarioComponent
+
+  ],
+  declarations: [
   ]
 })
 export class PagesModule { }
