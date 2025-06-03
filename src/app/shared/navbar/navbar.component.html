@@ -6,25 +6,25 @@
     (keydown.space)="goToHome()"
     role="button"
     tabindex="0">
-    <img class="brand-logo" src="assets/escasez-de-agua.png" alt="Logo ProyectoPozo" />
-    <span class="brand-name">Proyecto<span class="accent">Pozo</span></span>
+    <img class="brand-logo" src="assets/escasez-de-agua.png" aria-hidden="true"  alt="logo"/>
+    <span class="brand-name">ProyectoPozo</span>
   </div>
   <div class="nav-links">
     <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <i class="fas fa-home"></i>
-      <span>Inicio</span>
+      Inicio
     </a>
     <a routerLink="/explotaciones" routerLinkActive="active">
       <i class="fas fa-industry"></i>
-      <span>Explotaciones</span>
+      Explotaciones
     </a>
     <a routerLink="/pozos" routerLinkActive="active">
       <i class="fas fa-water"></i>
-      <span>Pozos</span>
+      Pozos
     </a>
     <a routerLink="/informacion" routerLinkActive="active">
       <i class="fas fa-info-circle"></i>
-      <span>Información</span>
+      Información
     </a>
   </div>
   <div class="user-menu" *ngIf="isAuthenticated()">
@@ -37,15 +37,15 @@
     </button>
     <div class="dropdown-menu" [class.show]="isUserMenuOpen">
       <button (click)="logout()" class="dropdown-item">
-        <i class="fas fa-sign-out-alt"></i>
-        <span>Cerrar Sesión</span>
+        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+        Cerrar Sesión
       </button>
     </div>
   </div>
   <div class="login-link" *ngIf="!isAuthenticated()">
     <a routerLink="/login">
       <i class="fas fa-sign-in-alt"></i>
-      <span>Iniciar Sesión</span>
+      Iniciar Sesión
     </a>
   </div>
 </nav>

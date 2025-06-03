@@ -13,7 +13,7 @@ import { AuthGuard } from './guards/auth.guard';
 import {UsuarioComponent} from './Pages/usuario/usuario.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home'},
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'explotaciones', component: ExplotacionesComponent },
