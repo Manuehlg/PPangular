@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base del pozo -->
+  <rect x="20" y="70" width="60" height="20" fill="#8b4513"/>
+  <!-- Estructura superior -->
+  <rect x="30" y="20" width="40" height="50" fill="#a0522d"/>
+  <!-- Techo -->
+  <polygon points="25,20 50,5 75,20" fill="#8b4513"/>
+  <!-- Agua -->
+  <circle cx="50" cy="45" r="10" fill="#3498db"/>
+</svg> 

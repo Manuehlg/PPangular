@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div 
+    class="brand" 
+    (click)="goToHome()" 
+    (keydown.enter)="goToHome()" 
+    (keydown.space)="goToHome()"
+    role="button" 
+    tabindex="0">
+    <img class="brand-logo" src="assets/water-well.svg" alt="logo" aria-hidden="true" />
+    <span class="brand-name">ProyectoPozo</span>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/Pages/explotaciones" routerLinkActive="active">Explotaciones</a>
+    <a routerLink="/Pages/pozos" routerLinkActive="active">Pozos</a>
+    <a routerLink="/Pages/informacion" routerLinkActive="active">Información</a>
+  </div>
+  <div class="user-menu" *ngIf="isAuthenticated()">
+    <button 
+      class="user-btn" 
+      (click)="toggleUserMenu()" 
+      aria-label="Menú de usuario"
+      [attr.aria-expanded]="isUserMenuOpen">
+      <img src="assets/user-icon.svg" alt="Usuario" class="user-icon" />
+    </button>
+    <div class="dropdown-menu" [class.show]="isUserMenuOpen">
+      <button (click)="logout()" class="dropdown-item">
+        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+        Cerrar Sesión
+      </button>
+    </div>
+  </div>
+  <div class="login-link" *ngIf="!isAuthenticated()">
+    <a routerLink="/login">Iniciar Sesión</a>
+  </div>
+</nav>
+

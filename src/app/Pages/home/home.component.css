@@ -1,0 +1,120 @@
+/* Host element styles for background */
+:host {
+    display: block; /* Necessary for background to fill the container */
+    min-height: calc(100vh - 60px); /* Adjust 60px if your navbar has a different height */
+    background-color: #1a3630; /* Dark green background */
+    /* Combining multiple backgrounds to suggest elements */
+    background-image:
+        /* Water drops (using radial gradients) */
+        radial-gradient(circle, rgba(0, 100, 80, 0.3) 1px, transparent 1px),
+        radial-gradient(circle, rgba(0, 100, 80, 0.3) 1px, transparent 1px),
+        /* Bricks (using linear gradients) */
+        linear-gradient(to right, rgba(80, 60, 40, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(80, 60, 40, 0.1) 1px, transparent 1px),
+        /* Cubes (more abstract, using multiple linear gradients) */
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.05) 75%, rgba(0, 0, 0, 0.05) 100%),
+        linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.05) 75%, rgba(0, 0, 0, 0.05) 100%);
+
+    /* Background sizes and positions for patterns */
+    background-size:
+        20px 20px, /* Water drops */
+        20px 20px, /* Water drops */
+        50px 50px, /* Bricks vertical */
+        50px 50px, /* Bricks horizontal */
+        60px 60px, /* Cubes 1 */
+        60px 60px; /* Cubes 2 */
+
+    background-position: 
+        0 0, 10px 10px, /* Water drops offset */
+        0 0, 0 0, /* Bricks */
+        0 0, 30px 0; /* Cubes offset */
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em; /* Large font size */
+    color: #a5d6a7; /* Light green for the title */
+    padding-top: 20px; /* Add some space from the top */
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #1a3630;
+  margin-bottom: 3rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slide {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 2rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.5s forwards;
+}
+
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bdc3c7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: #1a3630;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .slide {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  .slider-container {
+    margin: 0 1rem;
+  }
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="200" height="200" fill="#e8f4f8"/>
+  
+  <!-- Campo -->
+  <rect y="100" width="200" height="100" fill="#90caf9"/>
+  
+  <!-- Casa -->
+  <path d="M60 80 L100 50 L140 80 L140 130 L60 130 Z" fill="#795548"/>
+  
+  <!-- Puerta -->
+  <rect x="90" y="100" width="20" height="30" fill="#5d4037"/>
+  
+  <!-- Ventana -->
+  <rect x="70" y="90" width="15" height="15" fill="#bbdefb"/>
+  <rect x="115" y="90" width="15" height="15" fill="#bbdefb"/>
+  
+  <!-- Sol -->
+  <circle cx="160" cy="40" r="20" fill="#ffd54f"/>
+  
+  <!-- Árboles -->
+  <circle cx="40" cy="90" r="15" fill="#66bb6a"/>
+  <rect x="37" y="90" width="6" height="20" fill="#4caf50"/>
+  
+  <circle cx="160" cy="90" r="15" fill="#66bb6a"/>
+  <rect x="157" y="90" width="6" height="20" fill="#4caf50"/>
+</svg> 

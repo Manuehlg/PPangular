@@ -1,0 +1,73 @@
+<!-- Vista de lista -->
+<div class="explotaciones-container" *ngIf="!currentExplotacion">
+  <h1>Mis Explotaciones</h1>
+
+  <!-- Buscador -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      (ngModelChange)="onSearch()"
+      placeholder="Buscar por nombre o ciudad..."
+      class="search-input"
+    >
+  </div>
+
+  <!-- Lista de explotaciones -->
+  <div class="explotaciones-grid">
+    <div *ngFor="let explotacion of filteredExplotaciones" class="explotacion-card">
+      <div class="explotacion-image">
+        <img [src]="explotacion.image || 'assets/default-farm.svg'" [alt]="explotacion.name">
+      </div>
+      <div class="explotacion-info">
+        <h2>{{ explotacion.name }}</h2>
+        <p class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          {{ explotacion.city }}, {{ explotacion.provincia }}
+        </p>
+        <p class="pozos-count">
+          <i class="fas fa-tint"></i>
+          Pozos: {{ explotacion.numpozos }}
+        </p>
+        <button class="view-details-btn" (click)="viewDetails(explotacion)">
+          Ver Detalles
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje cuando no hay resultados -->
+  <div *ngIf="filteredExplotaciones.length === 0" class="no-results">
+    <p>No se encontraron explotaciones que coincidan con tu búsqueda.</p>
+  </div>
+</div>
+
+<!-- Vista de detalles -->
+<div class="explotacion-details" *ngIf="currentExplotacion">
+  <div class="details-header">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Volver
+    </button>
+    <h1>{{ currentExplotacion.name }}</h1>
+  </div>
+
+  <div class="details-content">
+    <div class="details-image">
+      <img [src]="currentExplotacion.image || 'assets/default-farm.svg'" [alt]="currentExplotacion.name">
+    </div>
+
+    <div class="details-info">
+      <div class="info-section">
+        <h2>Información General</h2>
+        <p class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Ubicación:</span> {{ currentExplotacion.city }}, {{ currentExplotacion.provincia }}
+        </p>
+        <p class="pozos-count">
+          <i class="fas fa-tint"></i>
+          <span>Número de Pozos:</span> {{ currentExplotacion.numpozos }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

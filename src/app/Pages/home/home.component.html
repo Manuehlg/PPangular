@@ -1,0 +1,17 @@
+<div class="home-container">
+  <h1 class="main-title">PROYECTO POZOS</h1>
+  
+  <div class="slider-container">
+    <div class="slide" [class.active]="true">
+      {{ slides[currentSlide] }}
+    </div>
+    
+    <div class="slide-indicators">
+      <span 
+        *ngFor="let slide of slides; let i = index" 
+        class="indicator"
+        [class.active]="i === currentSlide">
+      </span>
+    </div>
+  </div>
+</div>
