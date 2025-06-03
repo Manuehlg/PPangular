@@ -1,4 +1,4 @@
-import { Pozo } from './pozo.model';
+import { Pozo } from './Pozo';
 
 export class Mediciones {
   constructor(

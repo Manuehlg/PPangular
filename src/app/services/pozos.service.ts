@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Pozo } from '../core/models/pozo.model';
+import { Pozo } from '../core/models/Pozo';
 
 @Injectable({
   providedIn: 'root'

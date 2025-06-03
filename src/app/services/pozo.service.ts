@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Pozo } from '../core/models/pozo.model'; // Asegúrate de tener el modelo adecuado
+import { Pozo } from '../core/models/Pozo'; // Asegúrate de tener el modelo adecuado
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
