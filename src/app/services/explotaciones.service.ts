@@ -28,6 +28,12 @@ export class ExplotacionesService {
     );
   }
 
+  updateExplotacion(explo: Explotacion): Observable<Explotacion> {
+    return this.http.put<any>(`${this.apiUrl}/${explo.id}`, explo).pipe(
+      map(Explotacion.fromJson)
+    );
+  }
+
   deleteExplotacion(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }

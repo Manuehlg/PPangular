@@ -4,8 +4,7 @@ export class Explotacion {
     public nombre: string,
     public ubicacion: string,
     public descripcion: string,
-    public imagen: string,
-    public usuarioId: number
+    public imagen: string
   ) {}
 
   static fromJson(json: any): Explotacion {
@@ -14,8 +13,7 @@ export class Explotacion {
       json.nombre,
       json.ubicacion,
       json.descripcion,
-      json.imagen,
-      json.usuarioId
+      json.imagen
     );
   }
 }

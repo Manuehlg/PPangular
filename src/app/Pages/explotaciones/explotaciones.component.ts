@@ -50,11 +50,21 @@ export class ExplotacionesComponent implements OnInit {
       next: (data) => {
         this.explotaciones = data;
         this.loading = false;
+        
+        if (data.length === 0) {
+          this.messageService.add({
+            severity: 'info',
+            summary: 'Sin Explotaciones',
+            detail: 'No hay explotaciones registradas en el sistema.',
+            life: 5000
+          });
+        }
       },
       error: (error) => {
         console.error('Error al cargar las explotaciones:', error);
         this.error = 'No se pudieron cargar las explotaciones. Por favor, intenta de nuevo más tarde.';
         this.loading = false;
+        
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
