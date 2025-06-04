@@ -6,7 +6,7 @@
     (keydown.space)="goToHome()"
     role="button"
     tabindex="0">
-    <img class="brand-logo" src="assets/escasez-de-agua.png" aria-hidden="true"  alt="logo"/>
+    <img class="brand-logo" src="src/assets/escasez-de-agua.png" aria-hidden="true"  alt="logo"/>
     <span class="brand-name">ProyectoPozo</span>
   </div>
   <div class="nav-links">
@@ -33,10 +33,11 @@
       (click)="toggleUserMenu()"
       aria-label="Menú de usuario"
       [attr.aria-expanded]="isUserMenuOpen">
-      <img src="assets/user-icon.svg" alt="Usuario" class="user-icon" />
+      <i class="fas fa-user"></i>
+      <span class="user-name">{{ getCurrentUserName() }}</span>
     </button>
     <div class="dropdown-menu" [class.show]="isUserMenuOpen">
-      <button (click)="logout()" class="dropdown-item">
+      <button (click)="confirmLogout()" class="dropdown-item">
         <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
         Cerrar Sesión
       </button>
@@ -49,4 +50,15 @@
     </a>
   </div>
 </nav>
+
+<!-- Confirmation Dialog -->
+<p-confirmDialog 
+  [style]="{width: '450px'}" 
+  [baseZIndex]="10000"
+  acceptButtonStyleClass="p-button-danger" 
+  rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+
+<!-- Toast Messages -->
+<p-toast position="top-right"></p-toast>
 

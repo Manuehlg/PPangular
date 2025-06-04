@@ -47,23 +47,23 @@
     <div class="explotaciones-grid" *ngIf="explotaciones.length > 0">
       <p-card *ngFor="let explotacion of explotaciones" 
         styleClass="exploitation-card"
-        [header]="explotacion.name">
+        [header]="explotacion.nombre">
         <ng-template pTemplate="header">
           <div class="card-image">
-            <img [src]="explotacion.image || 'assets/default-farm.svg'" 
-                 [alt]="explotacion.name">
+            <img [src]="explotacion.imagen || 'assets/default-farm.svg'" 
+                 [alt]="explotacion.nombre">
           </div>
         </ng-template>
         
         <div class="card-content">
           <div class="location">
             <i class="fas fa-map-marker-alt"></i>
-            <span>{{ explotacion.city }}, {{ explotacion.provincia }}</span>
+            <span>{{ explotacion.ubicacion }}</span>
           </div>
           
-          <div class="wells-count">
-            <i class="fas fa-water"></i>
-            <span>{{ explotacion.numpozos }} pozos</span>
+          <div class="description">
+            <i class="fas fa-info-circle"></i>
+            <span>{{ explotacion.descripcion }}</span>
           </div>
         </div>
 

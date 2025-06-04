@@ -1,21 +1,21 @@
 export class Explotacion {
   constructor(
     public id: number,
-    public name: string,
-    public city: string,
-    public provincia: string,
-    public image: string,
-    public numpozos: number
+    public nombre: string,
+    public ubicacion: string,
+    public descripcion: string,
+    public imagen: string,
+    public usuarioId: number
   ) {}
 
   static fromJson(json: any): Explotacion {
     return new Explotacion(
       json.id,
-      json.name,
-      json.city,
-      json.provincia,
-      json.image,
-      json.numpozos
+      json.nombre,
+      json.ubicacion,
+      json.descripcion,
+      json.imagen,
+      json.usuarioId
     );
   }
 }

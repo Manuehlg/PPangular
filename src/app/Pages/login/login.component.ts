@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +19,10 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     ReactiveFormsModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule
   ],
+  providers: [MessageService],
   templateUrl: './login.component.html',
   standalone: true,
   styleUrls: ['./login.component.css']
@@ -33,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -62,10 +67,23 @@ export class LoginComponent implements OnInit {
 
       try {
         const { email, password } = this.loginForm.value;
-        await this.authService.login(email, password);
+        await this.authService.login(email, password).toPromise();
+        
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Inicio de Sesión Exitoso',
+          detail: '¡Bienvenido al sistema!'
+        });
+        
         this.router.navigate(['/home']);
       } catch (error) {
         this.loginError = 'Credenciales incorrectas. Por favor, verifica tus datos.';
+        
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error de Inicio de Sesión',
+          detail: 'Credenciales incorrectas. Por favor, verifica tus datos.'
+        });
       } finally {
         this.isLoading = false;
       }

@@ -1,1 +1,125 @@
-<p>informacion works!</p>
+<!-- Hero section with project title -->
+<div class="hero-card">
+    <div class="hero-content">
+        <h1>{{projectInfo.title}}</h1>
+        <h2>Plataforma Digital para el Control y Monitorización de Recursos Hídricos</h2>
+
+        <div class="feature-tags">
+            <span class="feature-tag">
+                <i class="pi pi-desktop"></i>
+                Desarrollo Web
+            </span>
+            <span class="feature-tag">
+                <i class="pi pi-angular"></i>
+                Angular
+            </span>
+            <span class="feature-tag">
+                <i class="pi pi-leaf"></i>
+                Sostenibilidad
+            </span>
+            <span class="feature-tag">
+                <i class="pi pi-sun"></i>
+                Agricultura
+            </span>
+            <span class="feature-tag">
+                <i class="pi pi-water"></i>
+                Gestión del Agua
+            </span>
+        </div>
+
+        <p class="hero-description">
+            Optimiza el uso y distribución del agua en tus pozos con tecnología avanzada
+        </p>
+    </div>
+</div>
+
+<!-- Project info section -->
+<div class="project-section">
+    <div class="info-card author-card">
+        <div class="card-content">
+            <div class="author-info">
+                <div class="author-avatar">
+                    <i class="pi pi-user"></i>
+                </div>
+                <div class="author-details">
+                    <h3>{{author.name}}</h3>
+                    <p>{{author.role}}</p>
+                    <p>{{author.university}}</p>
+                </div>
+            </div>
+            <div class="project-type">
+                <h4>{{projectInfo.type}}</h4>
+                <p>{{projectInfo.period}}</p>
+            </div>
+            <p class="project-description">{{projectInfo.description}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Objectives section -->
+<div class="objectives-section">
+    <div class="info-card">
+        <div class="card-content">
+            <h3>Objetivo Principal</h3>
+            <p class="main-objective">{{projectInfo.objectives.general}}</p>
+
+            <h3>Objetivos Específicos</h3>
+            <div class="objectives-grid">
+                <div class="objective-card" *ngFor="let objective of projectInfo.objectives.specific; let i = index">
+                    <div class="objective-number">{{i + 1}}</div>
+                    <p>{{objective}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Technical details -->
+<div class="details-section">
+    <div class="details-grid">
+        <!-- Context Card -->
+        <div class="detail-card context">
+            <div class="card-icon">
+                <i class="pi pi-compass"></i>
+            </div>
+            <div class="card-content">
+                <h3>Contexto</h3>
+                <p>{{projectInfo.context}}</p>
+            </div>
+            <div class="card-footer">
+                <span class="detail-tag">Agricultura</span>
+                <span class="detail-tag">Región</span>
+            </div>
+        </div>
+
+        <!-- Problem Card -->
+        <div class="detail-card problem">
+            <div class="card-icon">
+                <i class="pi pi-exclamation-circle"></i>
+            </div>
+            <div class="card-content">
+                <h3>Problemática</h3>
+                <p>{{projectInfo.problemDescription}}</p>
+            </div>
+            <div class="card-footer">
+                <span class="detail-tag">Recursos</span>
+                <span class="detail-tag">Desafíos</span>
+            </div>
+        </div>
+
+        <!-- Solution Card -->
+        <div class="detail-card solution">
+            <div class="card-icon">
+                <i class="pi pi-check-circle"></i>
+            </div>
+            <div class="card-content">
+                <h3>Solución</h3>
+                <p>{{projectInfo.solution}}</p>
+            </div>
+            <div class="card-footer">
+                <span class="detail-tag">Tecnología</span>
+                <span class="detail-tag">Innovación</span>
+            </div>
+        </div>
+    </div>
+</div>

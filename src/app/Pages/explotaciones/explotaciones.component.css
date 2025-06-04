@@ -158,16 +158,27 @@
   gap: 0.75rem;
 }
 
-.location, .wells-count {
+.location, .description {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   color: #6c757d;
 }
 
-.location i, .wells-count i {
+.location i, .description i {
   color: #1a3630;
   font-size: 1.1rem;
+  margin-top: 0.25rem;
+}
+
+.description span {
+  flex: 1;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 :host ::ng-deep .exploitation-card .p-card-footer {
