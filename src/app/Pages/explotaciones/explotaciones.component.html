@@ -1,73 +1,81 @@
-<!-- Vista de lista -->
-<div class="explotaciones-container" *ngIf="!currentExplotacion">
-  <h1>Buscar Explotaciones</h1>
-
-  <!-- Buscador -->
-  <div class="search-container">
-    <input
-      type="text"
-      [(ngModel)]="searchTerm"
-      (ngModelChange)="onSearch()"
-      placeholder="Buscar por nombre o ciudad..."
-      class="search-input"
-    >
+<div class="explotaciones-container">
+  <p-toast></p-toast>
+  
+  <div class="header">
+    <h1>Explotaciones</h1>
+    <p class="subtitle">Gestiona tus explotaciones agrícolas</p>
   </div>
 
-  <!-- Lista de explotaciones -->
-  <div class="explotaciones-grid">
-    <div *ngFor="let explotacion of filteredExplotaciones" class="explotacion-card">
-      <div class="explotacion-image">
-        <img [src]="explotacion.image || 'assets/default-farm.svg'" [alt]="explotacion.name">
-      </div>
-      <div class="explotacion-info">
-        <h2>{{ explotacion.name }}</h2>
-        <p class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          {{ explotacion.city }}, {{ explotacion.provincia }}
-        </p>
-        <p class="pozos-count">
-          <i class="fas fa-tint"></i>
-          Pozos: {{ explotacion.numpozos }}
-        </p>
-        <button class="view-details-btn" (click)="viewDetails(explotacion)">
-          Ver Detalles
-        </button>
-      </div>
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="loading">
+    <p-progressSpinner 
+      styleClass="custom-spinner" 
+      strokeWidth="4" 
+      fill="var(--surface-ground)" 
+      animationDuration=".5s">
+    </p-progressSpinner>
+    <p>Cargando explotaciones...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-state" *ngIf="error && !loading">
+    <div class="error-content">
+      <i class="fas fa-exclamation-circle"></i>
+      <h2>Error al cargar las explotaciones</h2>
+      <p>{{ error }}</p>
+      <button pButton 
+        label="Intentar de nuevo" 
+        icon="fas fa-sync" 
+        (click)="retryLoad()"
+        class="p-button-outlined">
+      </button>
     </div>
   </div>
 
-  <!-- Mensaje cuando no hay resultados -->
-  <div *ngIf="filteredExplotaciones.length === 0" class="no-results">
-    <p>No se encontraron explotaciones que coincidan con tu búsqueda.</p>
-  </div>
-</div>
-
-<!-- Vista de detalles -->
-<div class="explotacion-details" *ngIf="currentExplotacion">
-  <div class="details-header">
-    <button class="back-btn" (click)="goBack()">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
-    <h1>{{ currentExplotacion.name }}</h1>
-  </div>
-
-  <div class="details-content">
-    <div class="details-image">
-      <img [src]="currentExplotacion.image || 'assets/default-farm.svg'" [alt]="currentExplotacion.name">
+  <!-- Content State -->
+  <div class="content-state" *ngIf="!loading && !error">
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="explotaciones.length === 0">
+      <div class="empty-content">
+        <i class="fas fa-seedling"></i>
+        <h2>No hay explotaciones</h2>
+        <p>Aún no tienes ninguna explotación registrada.</p>
+      </div>
     </div>
 
-    <div class="details-info">
-      <div class="info-section">
-        <h2>Información General</h2>
-        <p class="location">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Ubicación:</span> {{ currentExplotacion.city }}, {{ currentExplotacion.provincia }}
-        </p>
-        <p class="pozos-count">
-          <i class="fas fa-tint"></i>
-          <span>Número de Pozos:</span> {{ currentExplotacion.numpozos }}
-        </p>
-      </div>
+    <!-- Explotaciones Grid -->
+    <div class="explotaciones-grid" *ngIf="explotaciones.length > 0">
+      <p-card *ngFor="let explotacion of explotaciones" 
+        styleClass="exploitation-card"
+        [header]="explotacion.name">
+        <ng-template pTemplate="header">
+          <div class="card-image">
+            <img [src]="explotacion.image || 'assets/default-farm.svg'" 
+                 [alt]="explotacion.name">
+          </div>
+        </ng-template>
+        
+        <div class="card-content">
+          <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{ explotacion.city }}, {{ explotacion.provincia }}</span>
+          </div>
+          
+          <div class="wells-count">
+            <i class="fas fa-water"></i>
+            <span>{{ explotacion.numpozos }} pozos</span>
+          </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+          <button pButton 
+            label="Ver detalles" 
+            icon="fas fa-arrow-right" 
+            (click)="viewExplotacion(explotacion.id)"
+            class="p-button-outlined p-button-rounded">
+          </button>
+        </ng-template>
+      </p-card>
     </div>
   </div>
 </div>

@@ -7,12 +7,12 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class ExplotacionesService {
 
-  private apiUrl = 'http://localhost:8080/explotaciones';
+  private apiUrl = 'http://localhost:8080/api/explotaciones';
 
   constructor(private http: HttpClient) {}
 
   getExplotaciones(): Observable<Explotacion[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/usuario/1`)
+    return this.http.get<any[]>(this.apiUrl)
       .pipe(map(data => data.map(Explotacion.fromJson)));
   }
 
